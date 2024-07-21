@@ -17,20 +17,19 @@ int maxProfit(std::vector<int>& prices){
 
         int currPrice =0;
         int maxPrice =0;
-        int pos =prices.size()-1;
         if (prices.size()==2){
             if (prices[prices.size()-1]>prices[prices.size()-2]){
                 return prices[prices.size()-1]-prices[prices.size()-2];
             }
         }
-        // for (int i= (prices.size()-1) ; i>0; i--){
-        //     currPrice = prices[i];
-        //     for (int j= i-1; j>-1; j--){
-        //         if(currPrice-prices[j]>maxPrice){
-        //             maxPrice = currPrice-prices[j];
-        //         }
-        //     }
-        // }
+        for (int i= (prices.size()-1) ; i>0; i--){
+            currPrice = prices[i];
+            for (int j= i-1; j>-1; j--){
+                if(currPrice-prices[j]>maxPrice){
+                    maxPrice = currPrice-prices[j];
+                }
+            }
+        }
         return maxPrice;
     // int minPos=0;
     //     for (int j=0;j<prices.size();j++){
