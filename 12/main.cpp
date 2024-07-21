@@ -4,9 +4,14 @@
 std::string intToRoman(int num);
 
 int main(){
-    int num = 10;
-
-    std::cout <<intToRoman(num);
+    int num=1000;
+    //Fun little twist
+    //int num;
+    // std::cout <<std::endl;
+    // std::cout << "I can convert any of the numbers into Roman!"<<std::endl<< "Type whatever integer number you would Like:";
+    // std::cin>> num;
+    // std::cout<<std::endl<< "Here is the number!"<<std::endl;
+    std::cout <<intToRoman(num)<<std::endl;
 
     return 0;
 }
@@ -15,7 +20,7 @@ std::string intToRoman(int num){
     std::string retOut;
     int temp=0;
     while (num >0){
-        if (num>1000){
+        if (num>=1000){
             retOut += "M";
             num-=1000;
         }
