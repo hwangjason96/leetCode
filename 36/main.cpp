@@ -37,7 +37,7 @@ bool isValidSudoku(std::vector<std::vector<char>>& board){
     }
 temp.clear();
 
-//Blocks C1
+    //Blocks C1
 
     for (int k=0; k<3; k++){
         for (int l=0; l<3; l++){
@@ -72,7 +72,7 @@ temp.clear();
     }
     temp.clear();
 
-//Blocks C2
+    //Blocks C2
 
     for (int k=3; k<6; k++){
         for (int l=0; l<3; l++){
@@ -108,7 +108,7 @@ temp.clear();
     }
     temp.clear();
 
-//Blocks C3
+    //Blocks C3
 
     for (int k=6; k<9; k++){
         for (int l=0; l<3; l++){
