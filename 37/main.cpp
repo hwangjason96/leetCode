@@ -1,24 +1,80 @@
 #include <iostream>
 #include <vector>
 
-bool isValidSudoku(std::vector<std::vector<char>>& board);
 bool isValid(std::vector<char> block);
-int main(){
-    std::vector<std::vector<char>> board = 
-    {
-{'5','3','.','.','7','.','.','.','.'}
-,{'6','.','.','1','9','5','.','.','.'}
-,{'.','9','8','.','.','.','.','6','.'}
-,{'8','.','.','.','6','.','.','.','3'}
-,{'4','.','.','8','.','3','.','.','1'}
-,{'7','.','.','.','2','.','.','.','6'}
-,{'.','6','.','.','.','.','2','8','.'}
-,{'.','.','.','4','1','9','.','.','5'}
-,{'.','.','.','.','8','.','.','7','9'}
-    };
+bool isValidRow(std::vector<std::vector<char>> board, int n);
+bool isValidColumn(std::vector<std::vector<char>> board, int m);
+bool isValidBlock(std::vector<std::vector<char>> board, int n, int m);
+bool isValidSudoku(std::vector<std::vector<char>>& board);
+void solveSudoku(std::vector<std::vector<char>>& board);
 
-    std::cout<< isValidSudoku(board);
+
+int main(){
+
     return 0;
+}
+void solveSudoku(std::vector<std::vector<char>>& board){
+    int n=0;
+    int m=0;
+    for (int i=0; i<9; i++){
+        if (board[r][])
+    }
+}
+
+bool isValid(std::vector<char> block){
+    sort(block.begin(),block.end());
+
+    for (int i=8; i>0; i--){
+        if(block[i]==block[i-1] && block[i]!='.'){
+            return false;
+        }
+        if(block [i]=='.'){
+            break;
+        }
+    }
+    return true;
+}
+bool isValidRow(std::vector<std::vector<char>> board, int n){
+    if (n>9||n<=0){
+        std::cout<<std::endl<<"invalid row number"<<std::endl;
+        return false;
+    }
+    else{
+        return isValid(board[n]);
+    }
+}
+bool isValidColumn(std::vector<std::vector<char>> board, int m){
+    std::vector<char> temp;
+    if (m>9|| m<=0){
+        std::cout<<std::endl<<"invalid column number"<<std::endl;
+        return false;
+    }
+    else{
+        for (int i=0; i<9; i++){
+            temp.push_back(board[i][m]);
+        }
+    }
+    return isValid(temp);
+}
+
+bool isValidBlock(std::vector<std::vector<char>> board, int n, int m){
+    //n is the row number, m is the column number
+    std::vector<char> temp;
+    if (n>3 || m>3 || n<=0 || m<=0){
+        std::cout<<std::endl<<"invalid block number"<<std::endl;
+        return false;
+    }
+    else{
+            for (int i= (n-1)*3; i<n*3; i++){
+                for (int j= (m-1)*3; j<m*3; j++){
+                    temp.push_back(board[i][j]);
+                }
+            }
+            if (isValid(temp)!=1){
+            return false;
+        }
+    }
+    return true;
 }
 
 bool isValidSudoku(std::vector<std::vector<char>>& board){
@@ -147,16 +203,3 @@ temp.clear();
     return true;
 }
 
-bool isValid(std::vector<char> block){
-    sort(block.begin(),block.end());
-
-    for (int i=8; i>0; i--){
-        if(block[i]==block[i-1] && block[i]!='.'){
-            return false;
-        }
-        if(block [i]=='.'){
-            break;
-        }
-    }
-    return true;
-}
